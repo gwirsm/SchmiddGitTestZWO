@@ -73,6 +73,7 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 -- m[Buchstabe] > Markierung im Text setzen und mit [Buchstabe] identifizieren
 --- '[Buchstabe] > zu Markerung [Buchstabe] springen
 ---- Strg+o > zurück zur vorigen Cursor-Position
+----- mit tab wieder zurück (hat zumindest auf zip6 geklappt)
 --- m[GROSSBUCHSTABE] > Markierung über 'aktuellen Puffer' hinaus speichern
 ---- [Trick: markiere Textstelle bspw mit 'a', gehe woanders hin und gebe d'a / v'a ein, dann deleted / markiert er alles bis zur Markierung]
 -- split, vsplit > Fenster teilen
@@ -93,6 +94,8 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 -- :grep -r 'suchbegriff' . > das normale grep-Kommando
 --- cn > gehe zum nächsten Treffer, auch in einer anderen Datei!!
 ---- das in Kombin mit split!!
+-- :reg > Zeige die 'Zwischenablage' (Register)
+--- "[zeichen]p > einfügen
 
 -- I / A > Einfügen am Anfang / Ende der Zeile
 -- o / O > Einfügen unter / über aktueller Zeile
