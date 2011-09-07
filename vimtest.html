@@ -42,9 +42,11 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 --- tabm N > verschiebe aktives Tab an die N-te Stelle
 ---- mehr zu Navigation in Tabs (und auch Nav. in Dateien ohne Tabs!): http://iblog.ikarius.net/index.php?/archives/122-Vim-Tabs.html ==> hier noch aufnehmen
 --- -datei
+-- :e > Pfad/Datei öffnen (Suchen ganz normal mit tab)
 -- :E > zum Öffnen Dateibaum anzeigen
 --- Im Dateibaum: t > öffne Datei in neuem Tab / v > öffne Datei in neuem VSplit
 --- Im Dateibauma kann man mit "/" suchen!
+-- :w dateiname > speichern als dateiname
 
 
 - Navigation im Text
@@ -81,6 +83,7 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 --- Strg+W > zwischen Fenstern hin und herspringen
 --- :close / :only > aktives Fenster schließen / alle anderen außer aktives Fenster 
 --- :split file.txt > file im neuen Fenster öffnen (mit :new: neue File öffnen)
+--- :res -10 > aktives Fenster um 10 Zeilen verkleinern
 -- :sh[EINGABE] / :!<befehl>[EINGABE] > Wechsel in Kommandozeile / direktes Ausführen eines Kommandos
 --- exit > wenn man in der 'vim-Kommandozeile' ist, kommt man so zurück zu vim
 -- % > springe zur öffnenden / schließenden Klammer () {}
@@ -141,6 +144,7 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 -- :help / :help errorcode / :help suchbegriff
 -- d2f) > d =  delete, 2te, f) = finde Klammer > "Lösche alles bis zur übernächsten Klammer"
 --- statt d auch y für Kopieren, oder visueller Modus...
+-- visueller Modus (und y, d) funktioniert auch mit Suchfunktion /
 -- d% > alles bis zur Gegenklammer löschen (wenn auf Klammer stehend)
 -- caB / ciB / cab / cib [bzw d statt c] > "change a / inner [B]lock": gesamten Inhalt eines Blocks löschen inkl./exkl. Klammer, [b]: nur ()
 -- gd / gf > springe (in C, Java, PHP) zur Variablendeklaration (und dann strg+o zurück, s.o.) / öffne die Datei, im Zusammenspiel mit Split!!!
