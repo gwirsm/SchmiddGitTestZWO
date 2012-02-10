@@ -56,7 +56,7 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 --- :cclose...
 -- pwd > zeige aktuelles Verzeichnis an
 -- cd path > wechsel path
--- befehl1 | befehl2 > Verkettung von Befehlen:
+-- befehl1 | befehl2 > Verkettung von Befehlen; bspw. tabnew datei.txt | set number
 
 - Navigation im Text
 -- k/j/h/l > hoch/runter/vor/zurück
@@ -117,8 +117,9 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 -- I / A > Einfügen am Anfang / Ende der Zeile
 -- o / O > Einfügen unter / über aktueller Zeile
 -- S > Zeile löschen, Text ersetzen
+-- s > Zeichen unterm Cursor löschen, gleich in den Einfüge-Modus
 -- rx > Zeichen unter Cursor durch x ersetzen (Replace)
--- R > Zeichen ab Cursorposition ersetzen (Replace)
+-- R > Replace-Modus: Schreiben und Text ersetzen
 -- J > aktuelle und Zeile darunter zusammenführen (Join)
 --- set:noai > autom. Einrückung verhindern
 --- set:paste > autom. Einrückung beim EINFÜGEN verhindern, d.h. die Einrückungen der Zwischenablage einfach übernehmen
@@ -162,6 +163,7 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 -- caB / ciB / cab / cib [bzw d statt c] > "change a / inner [B]lock": gesamten Inhalt eines Blocks löschen inkl./exkl. Klammer, [b]: nur ()
 -- gd / gf > springe (in C, Java, PHP) zur Variablendeklaration (und dann strg+o zurück, s.o.) / öffne die Datei, im Zusammenspiel mit Split!!!
 --- das dann noch viel vollendeter mit ctags
+--- aber grep und copen eigentlich völig ausreichend
 -- :%!sort / :%sort!
 --- :%sort u > unique doppelte Zeilen
 --- :%sort -M > Sortiert nach Monatsname
@@ -171,6 +173,9 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
    2. SHIFT+I
    3. Zeichen eingeben
    4. Esc
+-- :%s/,/\r/g > in Datei alle Komma durch Zeilenumbrüche ersetzen
+-- :%s/\(p\|div\)  :/\1: /g > beachte die 1: Ist Platzhalter für die vorne gefundene Variante
+-- Strg+x/a > Wert unter Cursor verringern/erhöhen
 
 - Ansichten
 -- :set cursorline
