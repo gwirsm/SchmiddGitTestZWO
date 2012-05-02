@@ -42,12 +42,15 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 --- gt / gT / gt <n> > goto nächstes/voriges/n-tes Tab
 --- tabm N > verschiebe aktives Tab an die N-te Stelle
 ---- mehr zu Navigation in Tabs (und auch Nav. in Dateien ohne Tabs!): http://iblog.ikarius.net/index.php?/archives/122-Vim-Tabs.html ==> hier noch aufnehmen
+--- tabdo (buffdo): Bspw. suchen über mehrere Tabs (Buffer), bspw. :tabdo s/search/replace/g
 --- -datei
 -- :e > Pfad/Datei öffnen (Suchen ganz normal mit tab)
 --- set wildmenu > ein Menü mit den Dateien im Verzeichnis wird eingeblendet
 -- :E > zum Öffnen Dateibaum anzeigen
 --- Im Dateibaum: t > öffne Datei in neuem Tab / v > öffne Datei in neuem VSplit
 --- Im Dateibauma kann man mit "/" suchen!
+-- :ls > zeige alle geöffneten Dateien an
+--- buff <nummer> > öffne die unter ls mit der <nummer> angezeigte Datei
 -- :qa vim mit allen geöffneten Dateien verlassen
 -- :w dateiname > speichern als dateiname
 -- :e! > Zurück auf den letzten gespeicherten (nicht geöffneten!) Stand
@@ -60,6 +63,8 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 -- cd path > wechsel path
 -- befehl1 | befehl2 > Verkettung von Befehlen; bspw. tabnew datei.txt | set number
 -- !! ==> :.! ==> :.!<shellbefehl> öffnet ausgabe des Befehls
+-- :set bg=dark/light > Syntax-Higlighting ändern
+-- :version > zeige Version und Einstellungen
 
 - Navigation im Text
 -- k/j/h/l > hoch/runter/vor/zurück
@@ -118,7 +123,11 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 --- cn > gehe zum nächsten Treffer, auch in einer anderen Datei!!
 ---- das in Kombin mit split!!
 -- :reg > Zeige die 'Zwischenablage' (Register)
+--- :y [zeichen] > packe die Zeile ins Register [zeichne]
+--- "[zeichen] y > packe markierten Bereich ins Register [zeichen]
 --- "[zeichen]p > einfügen
+--- * > Zwischenablage (raus und rein)
+--- - > letztes Register
 
 -- I / A > Einfügen am Anfang / Ende der Zeile
 -- o / O > Einfügen unter / über aktueller Zeile
@@ -148,6 +157,7 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 --- y^ > Bis zum Beginn der Zeile kopieren (2x^ klicken)
 --- y} / y{  > bis Absatz-Ende/Anfang kopieren
 -- p / P > Einfügen des Zwischenspeichers hinter / vor der aktuellen Stelle
+--- gp / gP > Einfügen, aber der Cursor steht _hinter_ dem Text
 -- Markieren von Text [-> verhält sich im Wesentlich wie y!]
 --- v,V oder strg+V > Zeichen, Zeilen, Blockweises markieren
 ---- x oder d > löschen des markierten Textes
@@ -179,6 +189,10 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
    2. SHIFT+I
    3. Zeichen eingeben
    4. Esc
+-- :%s/<Strg r><Strg w>/bla/g > Fügt als Suchmuster das Wort unter dem Cursor ein
+-- :%s/<Strg r><zeichen>/bla/g > Fügt als Suchmuster den im Regeister unter <zeichen> gespeicherten String ein
+--- :%s/bla/\=@<zeichen>/g > Referenziert auf den im Register unter <zeichen> gespeicherten String
+-- :%s//<replace>/g > das zuletzt gesuchte Muster durch <replace> ersetzen
 -- :%s/,/\r/g > in Datei alle Komma durch Zeilenumbrüche ersetzen
 -- :%s/\(p\|div\)  :/\1: /g > beachte die 1: Ist Platzhalter für die vorne gefundene Variante
 -- Strg+x/a > Wert unter Cursor verringern/erhöhen
@@ -191,6 +205,7 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 --- :set soft/hardwrap > ???
 -- :set linebreak > sorgt dafür, daß nicht mitten im Wort umgebrochen wird
 -- :set ??? > Breite des Textes, Umbrüche werden aber mitgespeichert!
+--- gj/gk > innerhalb einer gewrappten Texteile eine Bildschirmzeile runter
 
 - ToDo
 -- Plugins wie Struktur-Outline (bei Texteinfügen)
