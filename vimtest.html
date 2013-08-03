@@ -84,9 +84,12 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 -- qa, i, Tipperei, esc, q > Aufzeichnen von Tipperei im Register 'a' (oder einem anderen Buchstaben), @a: Aufrufen der Aufzeichnung --> hat irgendwie nicht geklappt (ToDo)
 -- Wort vor/zurück bei Mac: Im Macvim klappts, es geht auch mit ESC+W/B!!!
 -- abbr: Tset Test > Automatisches Ersetzen von Tset durch Test
--- :grep -r 'suchbegriff' . > das normale grep-Kommando
---- cn > gehe zum nächsten Treffer, auch in einer anderen Datei!!
----- das in Kombin mit split!!
+-- :grep -r 'suchbegriff' .* > das normale grep-Kommando
+--- :cn > gehe zum nächsten Treffer, auch in einer anderen Datei!!
+---- :copen: zeigt Trefferliste an
+---- :nnoremap <c-k> :cprevious<cr> // :nnoremap <c-j> :cnext<cr> > schnelles Navigieren
+--- :vimgrep: "vimgrep" and "lvimgrep" are part of Vim, and therefore are good for using on any system, especially if you want to use Vim-style regular expressions in your search. Keep in mind though, that vimgrep can often be slower than grep, which will call an external program to do the dirty work.
+--- s. auch lgrep, lvimgrep:  lgrep searches in the current directory and rgrep searches the current directory tree. rgrep knows about version control systems so it can avoid searching its control directories.
 
 -- I / A > Einfügen am Anfang / Ende der Zeile
 -- o / O > Einfügen unter / über aktueller Zeile
