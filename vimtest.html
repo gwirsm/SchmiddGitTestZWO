@@ -23,7 +23,15 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 <li>SEHR SCHÖN: http://tnerual.eriogerg.free.fr/vimqrc-ge.html</li>
 <li>http://vim.wikia.com/wiki/Best_Vim_Tips gute Tricks</li>
 <li>Schöne, knapp gehaltene Übersicht: http://www.nitidelo.de/vim.php</li>
-<li></li>
+<li>Tipps / Plugins:
+<ul>
+<li>http://nvie.com/posts/how-i-boosted-my-vim/</li>
+<li>http://spf13.com/post/the-15-best-vim-plugins<li>
+<li>http://weierophinney.net/matthew/archives/164-Vim-Productivity-Tips-for-PHP-Developers.html</li>
+<li>http://www.koch.ro/blog/index.php?/archives/63-VIM-an-a-PHP-IDE.html</li>
+<li>Gute Tricks: http://www-user.tu-chemnitz.de/~hot/VIM/Tips_und_Tricks.html</li>
+</ul>
+</li>
 <li></li>
 
 
@@ -31,14 +39,41 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 - äußere Bedienung
 -- persönliche Einstellungen in .vimrc speichern
 -- vim +[N] [datei] > Datei öffnen und gleich zu Zeile [N] springen
+-- vim -p <datei1> <datei2> > öffne Dateien in Tabs
 -- :tabnew
 --- Strg+BildAuf/Down | tabn / tabp > In Tabs navigieren; Strg... funktionierte nicht: wechselte zwischen Shell-Fenstern
 --- tabr / tabl > nach ganz rechts / links springen, äääh: umgekehrt komischerweise...
+--- gt / gT / gt <n> > goto nächstes/voriges/n-tes Tab
+--- tabm N > verschiebe aktives Tab an die N-te Stelle
 ---- mehr zu Navigation in Tabs (und auch Nav. in Dateien ohne Tabs!): http://iblog.ikarius.net/index.php?/archives/122-Vim-Tabs.html ==> hier noch aufnehmen
+--- tabdo (buffdo): Bspw. suchen über mehrere Tabs (Buffer), bspw. :tabdo s/search/replace/g
 --- -datei
+-- :e > Pfad/Datei öffnen (Suchen ganz normal mit tab)
+--- set wildmenu > ein Menü mit den Dateien im Verzeichnis wird eingeblendet
 -- :E > zum Öffnen Dateibaum anzeigen
+--- Im Dateibaum: t > öffne Datei in neuem Tab / v > öffne Datei in neuem VSplit
 --- Im Dateibauma kann man mit "/" suchen!
-
+-- :ls > zeige alle geöffneten Dateien an
+--- buff <nummer> > öffne die unter ls mit der <nummer> angezeigte Datei
+-- :qa vim mit allen geöffneten Dateien verlassen
+-- :w dateiname > speichern als dateiname
+-- :e! > Zurück auf den letzten gespeicherten (nicht geöffneten!) Stand
+-- :set no/number > Zeilennummerierung aus/einblenden
+-- hat man unten in der tabnew/e/such/etc-Zeile einen Haufen eingegeben, so lässt sich die ganze Zeile mit Cmd+C entfernen und bis zum ersten Zeichen mit Cmd+u (also wie auf der Shell)
+-- :grep -r "Suchbegriff" in/welchem/verzeichnis/*.dateityp (Pfad bis auf Dateiebene angeben!! also mindestens .../ordner/*)
+--- hat auf dem Firmenrechner irgendwie alles nicht so funktioniert, funktioniert hat aber
+---- das lag am "-r" das fehlte!!
+--- :vimgrep /suchbegriff/ */* (mal genauer in Doku nachlesen)
+--- :copen > zeigt die Suchergebnisse in Extrafenster an! (quickfix)
+--- :cclose...
+-- pwd > zeige aktuelles Verzeichnis an
+-- cd path > wechsel path
+-- befehl1 | befehl2 > Verkettung von Befehlen; bspw. tabnew datei.txt | set number
+-- !! ==> :.! ==> :.!<shellbefehl> öffnet ausgabe des Befehls
+-- :set bg=dark/light > Syntax-Higlighting ändern
+-- :version > zeige Version und Einstellungen
+-- :mksession pfad/zur/sessiondatei.vim > speichere den aktuellen Zustand!!
+--- :so pfad/zur/sessiondatei.vim > stelle den gespeicherten Zustand wieder her
 
 - Navigation im Text
 -- k/j/h/l > hoch/runter/vor/zurück
@@ -49,30 +84,38 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 --- ?[Suchbegriff]] > rückwärts suchen
 ---- n (nnn) springe sukszezive zum nächsten Vorkommen von [Suchbegriff]
 -- G > Textende
+-- M > Mittlere Bildschirm(!)zeile
+--- H > erste Bildschirmzeile
+--- L > letzte Bildschirmzeile
+-- zz > Verschiebe Screen so, daß die aktuelle Curor-Position in der Mitte ist
+--- zb > ...unten ist
+--- zt > ...oben ist
 -- w > zum nächsten Wortanfang springen
 --- N w > zum N-ten Wortanfang springen
 -- e > zum nächsten Wortende springen
 --- N e > zum N-ten Wortende springen
 -- 0/^/$ > Anfang der Zeile / erstes Zeichen der Zeile / Ende der Zeile
 --- D 0/^$ > bis Zeilenanfang/Ende löschen
--- W / B > hinter das nächste Leerzeichen springen 
+-- W / B / E > hinter/vor das nächste Leerzeichen springen 
 ---- D W/B > bis vor/nächstes Leerzeichen löschen
 -- #/* [über einem Wort]: Suche genau dieses Wort rückwärts/vorwärts; mit nnnn gehts weiter
 -- Strg+F / Strg+B > Seite vor / zurück
 -- Strg+D / Strg+U > halbe Seite vor zurück
 -- Strg+E / Strg+Y > scrollen
--- [n] f/t [Zeichen] > zum n-ten Vorkommen von [Zeichen] nach rechts/links gehen
+-- [n] f/F [Zeichen] > zum n-ten Vorkommen von [Zeichen] nach rechts/links gehen
 --- ; / , > wiederholen in die eine / andere Richtung
 -- {} > Absatz vor/zurück
 -- m[Buchstabe] > Markierung im Text setzen und mit [Buchstabe] identifizieren
 --- '[Buchstabe] > zu Markerung [Buchstabe] springen
 ---- Strg+o > zurück zur vorigen Cursor-Position
+----- mit tab wieder zurück (hat zumindest auf zip6 geklappt)
 --- m[GROSSBUCHSTABE] > Markierung über 'aktuellen Puffer' hinaus speichern
 ---- [Trick: markiere Textstelle bspw mit 'a', gehe woanders hin und gebe d'a / v'a ein, dann deleted / markiert er alles bis zur Markierung]
 -- split, vsplit > Fenster teilen
 --- Strg+W > zwischen Fenstern hin und herspringen
 --- :close / :only > aktives Fenster schließen / alle anderen außer aktives Fenster 
 --- :split file.txt > file im neuen Fenster öffnen (mit :new: neue File öffnen)
+--- :res -10 > aktives Fenster um 10 Zeilen verkleinern
 -- :sh[EINGABE] / :!<befehl>[EINGABE] > Wechsel in Kommandozeile / direktes Ausführen eines Kommandos
 --- exit > wenn man in der 'vim-Kommandozeile' ist, kommt man so zurück zu vim
 -- % > springe zur öffnenden / schließenden Klammer () {}
@@ -84,18 +127,29 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 -- qa, i, Tipperei, esc, q > Aufzeichnen von Tipperei im Register 'a' (oder einem anderen Buchstaben), @a: Aufrufen der Aufzeichnung --> hat irgendwie nicht geklappt (ToDo)
 -- Wort vor/zurück bei Mac: Im Macvim klappts, es geht auch mit ESC+W/B!!!
 -- abbr: Tset Test > Automatisches Ersetzen von Tset durch Test
+-- df[zeichen] > lösche bis zum nächsten [zeichen] inklusive
+--- dt[zeichen] > lösche bis zum nächsten [zeichen] exklusive
 -- :grep -r 'suchbegriff' .* > das normale grep-Kommando
 --- :cn > gehe zum nächsten Treffer, auch in einer anderen Datei!!
 ---- :copen: zeigt Trefferliste an
 ---- :nnoremap <c-k> :cprevious<cr> // :nnoremap <c-j> :cnext<cr> > schnelles Navigieren
 --- :vimgrep: "vimgrep" and "lvimgrep" are part of Vim, and therefore are good for using on any system, especially if you want to use Vim-style regular expressions in your search. Keep in mind though, that vimgrep can often be slower than grep, which will call an external program to do the dirty work.
 --- s. auch lgrep, lvimgrep:  lgrep searches in the current directory and rgrep searches the current directory tree. rgrep knows about version control systems so it can avoid searching its control directories.
+--- :cn > gehe zum nächsten Treffer, auch in einer anderen Datei!!
+
+-- :reg > Zeige die 'Zwischenablage' (Register)
+--- :y [zeichen] > packe die Zeile ins Register [zeichne]
+--- "[zeichen] y > packe markierten Bereich ins Register [zeichen]
+--- "[zeichen]p > einfügen
+--- * > Zwischenablage (raus und rein)
+--- - > letztes Register
 
 -- I / A > Einfügen am Anfang / Ende der Zeile
 -- o / O > Einfügen unter / über aktueller Zeile
 -- S > Zeile löschen, Text ersetzen
+-- s > Zeichen unterm Cursor löschen, gleich in den Einfüge-Modus
 -- rx > Zeichen unter Cursor durch x ersetzen (Replace)
--- R > Zeichen ab Cursorposition ersetzen (Replace)
+-- R > Replace-Modus: Schreiben und Text ersetzen
 -- J > aktuelle und Zeile darunter zusammenführen (Join)
 --- set:noai > autom. Einrückung verhindern
 --- set:paste > autom. Einrückung beim EINFÜGEN verhindern, d.h. die Einrückungen der Zwischenablage einfach übernehmen
@@ -118,6 +172,7 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 --- y^ > Bis zum Beginn der Zeile kopieren (2x^ klicken)
 --- y} / y{  > bis Absatz-Ende/Anfang kopieren
 -- p / P > Einfügen des Zwischenspeichers hinter / vor der aktuellen Stelle
+--- gp / gP > Einfügen, aber der Cursor steht _hinter_ dem Text
 -- Markieren von Text [-> verhält sich im Wesentlich wie y!]
 --- v,V oder strg+V > Zeichen, Zeilen, Blockweises markieren
 ---- x oder d > löschen des markierten Textes
@@ -131,17 +186,54 @@ Ich nutze die Gelegenheit mal für eine VIM-Dokumentation
 -- Strg+t/d > ganze Zeile per Tab einrücken / zurückrücken
 
 - Hilfreiche Beispiele / Tricks
+-- :help / :help errorcode / :help suchbegriff
 -- d2f) > d =  delete, 2te, f) = finde Klammer > "Lösche alles bis zur übernächsten Klammer"
 --- statt d auch y für Kopieren, oder visueller Modus...
+-- visueller Modus (und y, d) funktioniert auch mit Suchfunktion /
 -- d% > alles bis zur Gegenklammer löschen (wenn auf Klammer stehend)
 -- caB / ciB / cab / cib [bzw d statt c] > "change a / inner [B]lock": gesamten Inhalt eines Blocks löschen inkl./exkl. Klammer, [b]: nur ()
+-- <anzahl>i<zeichen>ESC > <anzahl> mal ein <zeichen> einfügen
 -- gd / gf > springe (in C, Java, PHP) zur Variablendeklaration (und dann strg+o zurück, s.o.) / öffne die Datei, im Zusammenspiel mit Split!!!
+--- das dann noch viel vollendeter mit ctags
+--- aber grep und copen eigentlich völig ausreichend
+-- :%!sort / :%sort!
+--- :%sort u > unique doppelte Zeilen
+--- :%sort -M > Sortiert nach Monatsname
+--- :%sort n > numerisch...
+-- GEIL: Ein Zeichen vertikal runter in jede Zeile einfügen:
+   1. Blockweises Markieren
+   2. SHIFT+I
+   3. Zeichen eingeben
+   4. Esc
+-- :%s/<Strg r><Strg w>/bla/g > Fügt als Suchmuster das Wort unter dem Cursor ein
+-- :%s/<Strg r><zeichen>/bla/g > Fügt als Suchmuster den im Regeister unter <zeichen> gespeicherten String ein
+--- :%s/bla/\=@<zeichen>/g > Referenziert auf den im Register unter <zeichen> gespeicherten String
+-- :%s//<replace>/g > das zuletzt gesuchte Muster durch <replace> ersetzen
+-- :%s/,/\r/g > in Datei alle Komma durch Zeilenumbrüche ersetzen
+-- :%s/\(p\|div\)  :/\1: /g > beachte die 1: Ist Platzhalter für die vorne gefundene Variante
+--- :'<,'>s/bla/fasel/g > das vor dem s entsteht nach markieren (v), dann: ersetze darin(!) bla durch fasel
+--- :s/bla/fasel/g > Ersetzen in der *ganzen* Zeile
+--- :s/bla/fasel > Erseten des *ersten* bla durch fasel
+-- Strg+x/a > Wert unter Cursor verringern/erhöhen
+-- :X > Datei verschlüsseln (passiert nach Speichern)
+-- Diese Sonderzeichen wie  eingeben mit Strg+v<zeichen>, d.h. Strg+vm
+-- vimdiff datei1 datei2 > vergleicht zwei Dateien
+--- :diffthis > sind zwei Dateien via split geöffnet, dann wie vimdiff
+
+- Ansichten
+-- :set cursorline
+-- :set wrap/nowrap
+--- :set soft/hardwrap > ???
+-- :set linebreak > sorgt dafür, daß nicht mitten im Wort umgebrochen wird
+-- :set ??? > Breite des Textes, Umbrüche werden aber mitgespeichert!
+--- gj/gk > innerhalb einer gewrappten Texteile eine Bildschirmzeile runter
 
 - ToDo
 -- Plugins wie Struktur-Outline (bei Texteinfügen)
 -- gvim mit der Option --remote aufrufen: Serverseitiges Editieren im nicht Commandline-Modus?
 -- Vim 7.3: Relative Number!! Einstellung für vimrc
 -- vim 7.3: undofile > ermöglicht Rückgängigmachen auch nachdem man eine Datei zwischenzeitlich geschlossen hat!
+-- grep, vimgrep alles rausholen
 -- warum tun's die Einstellungen für Wordwrap, textwidth, list (versteckte Zeichen anzeigen)  nicht? Version??
 -- "There are more uses of multiple windows. The preview-tag mechanism is a very good example. This opens a special preview window, while keeping the cursor in the file you are working on. The text in the preview window shows, for example, the function declaration for the function name that is under the cursor. If you move the cursor to another name and leave it there for a second, the preview window will show the definition of that name. It could also be the name of a structure or a function which is declared in an include file of your project."
 
